@@ -8,6 +8,9 @@ public class WelcomeMsg {
             "Type \"NEXT\" for a different quote.\n" +
             "Type \":q!\" to exit.\n" +
             "==============================================================\n\n";
+
+    /*  This could be a getter, but this way we can add some data validation, like different msg for different users,
+     or msg depending on the current date etc. */
     public void sayHello() {
         System.out.println(welcomeMsg);
     }
