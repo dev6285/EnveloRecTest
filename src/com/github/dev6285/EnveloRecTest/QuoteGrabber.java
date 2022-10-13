@@ -14,6 +14,10 @@ public class QuoteGrabber {
     My first thought was to parse the JSON from the https://api.kanye.rest/, but after reading
     the documentation for the API (https://github.com/ajzbc/kanye.rest) I've decided it'll be easier and faster
     to scrap only the String based on the simplified version (https://api.kanye.rest/text).
+
+    !!! Well, to make it clean and legitimate this should be an asynchronous call, but I'm afraid I won't have time
+        before the task deadline for debuging the DB part related (e.g. numeration of quotes in the DB
+        if you type "next" faster than the API delivers new quotes etc.)
      */
     public void scrapQuoteFromApi() {
         try {
