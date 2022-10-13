@@ -9,7 +9,7 @@ Odpowiadając na pozostałe pytania:
 
 1B: "Główna różnica między listą Array i Linked jest związana z ich strukturą. Tablice to struktura danych oparta na indeksach, w której każdy element jest powiązany z indeksem. Z drugiej strony lista powiązań opiera się na referencjach, w których każdy węzeł składa się z danych i odniesień do poprzedniego i następnego elementu."
 
-2: Przykładowa metoda sprawdzająca czy w tablicy znajduje się wskazana liczba całkowita (x):
+2.: Przykładowa metoda sprawdzająca czy w tablicy znajduje się wskazana liczba całkowita (x):
 =========================================================
 private boolean search(int[] numbers, int x) {
         boolean isInArray = false;
