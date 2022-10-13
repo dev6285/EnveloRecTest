@@ -12,8 +12,8 @@ public class Main {
 
         QuoteDb.getInstance();                      // Setup the database for quotes.
 
-        UserMenu userMenu = new UserMenu();
-        userMenu.loadUserMenu();                    // Setup the user UI.
+        UserMenu.getInstance();                     // Setup the user UI.
+        UserMenu.loadUserMenu();
 
     }
 }
