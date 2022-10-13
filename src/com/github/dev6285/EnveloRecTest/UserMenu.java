@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class UserMenu {
-    private static int nextCounter;    // Counter for checking how many quotes have been requested
+    private static int nextCounter;                     // Counter for checking how many quotes have been requested
+    private static QuoteGrabber quoteGrabber;
     private static UserMenu INSTANCE;
 
     private UserMenu() {
         nextCounter = 0;
+        quoteGrabber = new QuoteGrabber();
+        loadUserMenu();
     }
 
     public static UserMenu getInstance() {
@@ -20,6 +23,12 @@ public class UserMenu {
     }
 
     public static void loadUserMenu() {
+        quoteGrabber.showInitialQuoteInMenu();                   //show a quote for the first time when App is started
+        processUserCommands();                                   //logic behind user typed commands in console
+
+    }
+
+    private static void processUserCommands() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String userCommand = "";
         try {
@@ -31,41 +40,38 @@ public class UserMenu {
             case "next":
             case "NEXT":
                 System.out.println("Quote:");
-                QuoteGrabber quoteGrabber = new QuoteGrabber();
                 quoteGrabber.scrapQuoteFromApi();
+                while (QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) { // is the latest quote already in the DB?
+                    quoteGrabber.scrapQuoteFromApi();
+                }
 
-
-                while (!QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) { // is the quote in the DB already?
-//                    if (QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) {
-//                        System.out.println("debug: quote WAS in the DB, scraping for a new one");
-                        quoteGrabber.scrapQuoteFromApi();
-//                    } else {
-                        System.out.println("debug: WAS not in the DB, adding to DB");
-                        QuoteDb.addContent(quoteGrabber.getQuote());
-                        setNextCounter();
-                    }
+                QuoteDb.addContent(quoteGrabber.getQuote());
+                setNextCounter();
 
                 quoteGrabber.displayQuote();
-                System.out.println("next counter: "+getNextCounter());
-                loadUserMenu();
+                processUserCommands();
                 break;
+
             case ":q!":
                 System.out.println("Ok, bye!");
                 System.exit(0);
+
             default:
-                System.out.println("Invalid option. Please chose something else.");
-                loadUserMenu();
+                System.out.println("Invalid option. Please choose something else.");
+                processUserCommands();
                 break;
+
 
             /*
             debug tools:
              */
+            case "SELECT * FROM quotesDb":      // I'm kidding, just showing off with my mad SQL skills ;)
             case "db":
                 QuoteDb.fullDbDisplay();
                 break;
             case "show last":
-                QuoteDb.displayDB(nextCounter-1);
-                loadUserMenu();
+                QuoteDb.displayDB(nextCounter - 1);
+                processUserCommands();
                 break;
         }
     }
@@ -74,7 +80,4 @@ public class UserMenu {
         nextCounter++;
     }
 
-    public static int getNextCounter() {
-        return nextCounter;
-    }
 }
