@@ -22,4 +22,4 @@ Odpowiadając na pozostałe pytania:
         return isInArray;        
     }    
 
-Prawdopodobnie bardziej optymalnym rozwiązaniem byłoby użycie Arrays.binarySearch(numbers,x). Niestety z zabrakło mi czasu aby napisać działające rozwiązanie na podstawie tej metody. Również z tego samego powdu niestety nie uzupełniam rozwiązania o przewidywaną złożoność obliczeniową oraz pamięciową. Natomiast myślę, że przy odpowiednim nakładzie pracy z odrobiną doświadczenia, np w oparciu o https://binarnie.pl/zlozonosc-obliczeniowa/ jest to do zrobienia.
+Prawdopodobnie bardziej optymalnym rozwiązaniem byłoby użycie Arrays.binarySearch(numbers,x). Niestety zabrakło mi czasu aby napisać i przetestować działające rozwiązanie na podstawie tej metody. Również z tego samego powdu niestety nie uzupełniam rozwiązania o przewidywaną złożoność obliczeniową oraz pamięciową. Natomiast myślę, że przy odpowiednim nakładzie pracy z odrobiną doświadczenia, np w oparciu o https://binarnie.pl/zlozonosc-obliczeniowa/ jest to do zrobienia.
