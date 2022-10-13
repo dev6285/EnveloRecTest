@@ -1,5 +1,5 @@
 # EnveloRecTest
-Recruitment test for the "Akademia Envelo w PKP Informatyka"
+Test praktyczny do "Akademia Envelo w PKP Informatyka"
 
 Cześć! Kod do zadania #3 jest do pobrania z tego repozytorium.
 
