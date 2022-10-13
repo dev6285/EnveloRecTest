@@ -30,34 +30,23 @@ public class UserMenu {
         switch (userCommand) {
             case "next":
             case "NEXT":
-//                setNextCounter();
                 System.out.println("Quote:");
                 QuoteGrabber quoteGrabber = new QuoteGrabber();
                 quoteGrabber.scrapQuoteFromApi();
 
-//                System.out.println(QuoteDb.testT(quoteGrabber.getQuote())); // is it in the DB already?
-                while (QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) {
-                    if (QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) {
-                        System.out.println("debug: quote WAS in the DB, scraping for a new one");
+
+                while (!QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) { // is the quote in the DB already?
+//                    if (QuoteDb.checkIfItsAlreadyInTheDb(quoteGrabber.getQuote())) {
+//                        System.out.println("debug: quote WAS in the DB, scraping for a new one");
                         quoteGrabber.scrapQuoteFromApi();
-                    } else {
+//                    } else {
                         System.out.println("debug: WAS not in the DB, adding to DB");
                         QuoteDb.addContent(quoteGrabber.getQuote());
                         setNextCounter();
                     }
-                }
-
-//                if (QuoteDb.testT(quoteGrabber.getQuote())) {
-//                    QuoteDb.addContent(quoteGrabber.getQuote());
-//                } else {
-//                    quoteGrabber.scrapQuoteFromApi();
-//                }
-
-//                QuoteDb.addContent(quoteGrabber.getQuote());
-//                System.out.println("debug (DB preview): ");
-//                QuoteDb.displayDB(getNextCounter());
 
                 quoteGrabber.displayQuote();
+                System.out.println("next counter: "+getNextCounter());
                 loadUserMenu();
                 break;
             case ":q!":
@@ -75,7 +64,8 @@ public class UserMenu {
                 QuoteDb.fullDbDisplay();
                 break;
             case "show last":
-                QuoteDb.displayDB(getNextCounter());
+                QuoteDb.displayDB(nextCounter-1);
+                loadUserMenu();
                 break;
         }
     }
