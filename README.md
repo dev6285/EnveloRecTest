@@ -12,27 +12,17 @@ Odpowiadając na pozostałe pytania:
 2: Przykładowa metoda sprawdzająca czy w tablicy znajduje się wskazana liczba całkowita (x):
 
 ////////////////////////////////////////////////////////////
-
-private boolean search(int[] numbers, int x) {
-
-        boolean isInArray = false;
         
-        for (int number : numbers) {
-        
-            if (number == x) {
-            
-                isInArray = true;
-                
+        private boolean search(int[] numbers, int x) {
+        boolean isInArray = false;        
+        for (int number : numbers) {        
+            if (number == x) {            
+                isInArray = true;                
                 break;
-                
-            }
-            
-        }
-        
-        return isInArray;
-        
-    }
-    
+               }            
+        }        
+        return isInArray;        
+    }    
 ////////////////////////////////////////////////////////////
 
 Prawdopodobnie bardziej optymalnym rozwiązaniem byłoby użycie Arrays.binarySearch(numbers,x). Niestety z zabrakło mi czasu aby napisać działające rozwiązanie na podstawie tej metody. Również z tego samego powdu niestety nie uzupełniam rozwiązania o przewidywaną złożoność obliczeniową oraz pamięciową. Natomiast myślę, że przy odpowiednim nakładzie pracy z odrobiną doświadczenia, np w oparciu o https://binarnie.pl/zlozonosc-obliczeniowa/ jest to do zrobienia.
